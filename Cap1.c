@@ -20,7 +20,7 @@ int main()
   V1 ^= V2;
   V2 ^= V1;
 
-  printf("\nValues ​​after exchange\n");
+  printf("\nValues after exchange\n");
 
   printf("V1 = %c\n", V1);
   printf("V2 = %c\n", V2);
@@ -131,7 +131,7 @@ int main()
 
 int main()
 {
-  unsigned num, limit, result, factor;
+  unsigned int num, limit, result, factor;
 
   scanf("%u", &num);
   scanf("%u", &limit);
@@ -141,8 +141,18 @@ int main()
     result = num;
   else
   {
-    
+    factor = 1;
+
+    do
+    {
+      result = num * factor;
+      factor++;
+    } while (result < limit);
   }
+
+  system("cls");
+
+  printf("Response: %u. - Factor: %u", result, factor);
 
   return 0;
 }
