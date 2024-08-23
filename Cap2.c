@@ -2,16 +2,10 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-#define ex4
+#define ex5
 
 /*
   OBS.: Todos os programa devem ser finalizados pelo usuario.
-
-  5 - As ligacoes telefonicas são cobradas pela sua duracao. O sistema registra os
-      instantes em que a ligacao foi iniciada e concluida.
-      Escreva um programa que recebe via teclado dois instantes dados em
-      horas, minutos e segundo e determina o intervalo de tempo
-      (em horas, minutos e segundos) decorrido entre eles.
 */
 
 #ifdef ex1
@@ -295,6 +289,94 @@ int main()
 
   while ((optMenu = menu()) != 2)
   {
+    if (optMenu == 1)
+    {
+      double distance = 0, gasoline = 0, average = 0;
+
+      system("cls");
+
+      printf(" - Calculate Consumption - \n");
+
+      while (distance <= 0)
+      {
+        printf("\nEnter the distance in km traveled: ");
+        scanf("%lf", &distance);
+      }
+
+      while (gasoline <= 0)
+      {
+        printf("\nEnter the amount of gasoline used: ");
+        scanf("%lf", &gasoline);
+      }
+
+      average = distance / gasoline;
+
+      system("cls");
+
+      printf(" - Calculate Consumption - \n");
+      printf("\nAverage consumption: %.2f km/l.", average);
+      printf("\nMessage: ");
+
+      if (average < 8)
+        printf("Sell the car!");
+      else if (average <= 14)
+        printf("Economic!");
+      else if (average > 14)
+        printf("Super economic!");
+      else
+        printf("ERROR!");
+
+      printf("\n");
+      printf("\n");
+
+      system("pause");
+    }
+  }
+}
+
+#endif
+
+// ================================================================================
+
+#ifdef ex5
+
+/*
+  5 - As ligacoes telefonicas são cobradas pela sua duracao. O sistema registra os
+      instantes em que a ligacao foi iniciada e concluida.
+      Escreva um programa que recebe via teclado dois instantes dados em
+      horas, minutos e segundo e determina o intervalo de tempo
+      (em horas, minutos e segundos) decorrido entre eles.
+*/
+
+int menu()
+{
+  int opt = 0;
+
+  system("cls");
+
+  printf(" - Calculate Call Time - \n");
+  printf("\n");
+  printf(" |  1 - Start\n");
+  printf(" |  2 - Exit the program\n");
+  printf("\nSelect an option: ");
+
+  scanf("%d", &opt);
+
+  return opt;
+}
+
+int main()
+{
+  int optMenu;
+
+  while ((optMenu = menu()) != 2)
+  {
+    if (optMenu == 1)
+    {
+      system("cls");
+
+      printf(" - Calculate Call Time - \n");
+    }
   }
 }
 
