@@ -375,7 +375,59 @@ int main()
     {
       system("cls");
 
-      printf(" - Calculate Call Time - \n");
+      if (optMenu == 1)
+      {
+        int startHours, startMinutes, startSeconds, endHours, endMinutes, endSeconds;
+
+        while (1)
+        {
+          printf("Call start time (format: HH MM SS): ");
+          scanf("%d %d %d", &startHours, &startMinutes, &startSeconds);
+
+          if (startHours > 24 || startMinutes >= 60 || startSeconds >= 60)
+          {
+            printf("\nError: invalid entries! Try again...\n");
+          } else break;
+        }
+
+        while (1)
+        {
+          printf("\nCall end time (format: HH MM SS): ");
+          scanf("%d %d %d", &endHours, &endMinutes, &endSeconds);
+
+          if (endHours > 24 || endMinutes >= 60 || endSeconds >= 60)
+          {
+            printf("\nError: invalid entries! Try again...\n");
+          } else break;
+        }
+
+        int startConvertedTime = 0, endConvertedTime = 0;
+        
+        startConvertedTime += (startHours * 3600);
+        startConvertedTime += (startMinutes * 60);
+        startConvertedTime += startSeconds;
+
+        endConvertedTime += (endHours * 3600);
+        endConvertedTime += (endMinutes * 60);
+        endConvertedTime += endSeconds;
+
+        if (startConvertedTime > endConvertedTime)
+        {
+          printf("Error: invalid entries ()!\n");
+        }
+        else
+        {
+          int totalTime = endConvertedTime - startConvertedTime;
+
+          int totalHours = (totalTime / 3600);
+          int totalMinutes = ((totalTime % 3600) / 60 );
+          int totalSeconds = totalTime % 60;
+
+          printf("\nTotal call time: %dh %dm %ds\n", totalHours, totalMinutes, totalSeconds);
+        }
+      }
+
+      system("pause");
     }
   }
 }
