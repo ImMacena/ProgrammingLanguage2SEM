@@ -2,18 +2,10 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-#define ex3
+#define ex4
 
 /*
   OBS.: Todos os programa devem ser finalizados pelo usuario.
-
-  3 - Escreva um programa que receba na funcao main() 2 valores inteiro. Escreva
-      uma funcao para cada operacoes aritmeticas e passe como parametro os 2
-      valores recebidos na funcao main(). Retorne os resultados usando o comando
-      return e imprima os 4 resultados no video na funcao main().
-
-  4 - Reescreva o programa do exercicio anterior para receber via teclado n
-      valores. Os n valores nao sao definidos previamente.
 
   5 - Escreva um programa que receba n valores inteiros via teclado na funcao main().
       Faca uma calculadora com as 4 operacoes aritmeticas.(utilize o comando switch).
@@ -337,6 +329,121 @@ int main()
       printf("Subtraction: %d - %d: %d\n", input1, input2, subtraction(input1, input2));
       printf("Multiplication: %d * %d: %d\n", input1, input2, multiplication(input1, input2));
       printf("Division: %d / %d: %.3f\n", input1, input2, division(input1, input2));
+
+      printf("\n");
+
+      system("pause");
+    }
+  }
+}
+
+#endif
+
+// ================================================================================
+
+#ifdef ex4
+
+/*
+  4 - Reescreva o programa do exercicio anterior para receber via teclado n
+      valores. Os n valores nao sao definidos previamente.
+*/
+
+int multiplication(int v1, int v2)
+{
+  return v1 * v2;
+}
+
+int sum(int v1, int v2)
+{
+  return v1 + v2;
+}
+
+int subtraction(int v1, int v2)
+{
+  return v1 - v2;
+}
+
+float division(int v1, int v2)
+{
+  return v1 / (float)v2;
+}
+
+int menu()
+{
+  int opt = 0;
+
+  system("cls");
+
+  printf("===========================\n");
+  printf("       Calculator\n");
+  printf("===========================\n");
+  printf("\n");
+  printf(" |  1 - Start\n");
+  printf(" |  2 - Exit the program\n");
+  printf("\nSelect an option: ");
+
+  scanf("%d", &opt);
+
+  return opt;
+}
+
+int main()
+{
+  int optMenu, input, multiplicationRes, sumRes, subtractionRes;
+  double divisionRes;
+
+  while ((optMenu = menu()) != 2)
+  {
+    if (optMenu == 1)
+    {
+      bool exit = false;
+
+      system("cls");
+
+      for (int i = 0; exit == false; i++)
+      {
+        int opt2 = 0;
+
+        printf("Enter the %d value: ", i + 1);
+        scanf("%d", &input);
+
+        if (i == 0)
+        {
+          multiplicationRes = input;
+          sumRes = input;
+          subtractionRes = input;
+          divisionRes = input;
+        }
+        else
+        {
+          multiplicationRes = multiplication(multiplicationRes, input);
+          sumRes = sum(sumRes, input);
+          subtractionRes = subtraction(subtractionRes, input);
+          divisionRes = division(divisionRes, input);
+        }
+
+        while ((opt2 != 1) && (opt2 != 2))
+        {
+          printf("\n1 - Continue");
+          printf("\n2 - See result\n");
+          printf("Select an option: ");
+
+          scanf("%d", &opt2);
+        }
+
+        if (opt2 == 2)
+          exit = true;
+
+        system("cls");
+      }
+
+      system("cls");
+
+      printf("- RESULTS - \n");
+      printf("\nSum: %d\n", sumRes);
+      printf("Subtraction: %d\n", subtractionRes);
+      printf("Multiplication: %d\n", multiplicationRes);
+      printf("Division: %.3f\n", divisionRes);
 
       printf("\n");
 
