@@ -216,8 +216,8 @@ int main()
 
       system("cls");
 
-      vectorEvenIndexes = getEvenIndexes(numbers, vectorLength, &evenCount);
-      vectorOddIndexes = getOddIndexes(numbers, vectorLength, &oddCount);
+      vectorEvenIndexes = getEvenIndexes(&numbers[0], vectorLength, &evenCount);
+      vectorOddIndexes = getOddIndexes(&numbers[0], vectorLength, &oddCount);
 
       printf("Original vector: [ ");
       for (int i = 0; i < vectorLength; i++)
