@@ -1,23 +1,10 @@
 #include "stdio.h"
 #include "stdlib.h"
 
-#define ex5
+#define ex2
 
 /*
-
   OBS.: Todos os programa devem ser finalizados pelo usuario.
-
-  2 - Escreva um programa para receber via teclado em vetores 3 int, 3 long,
-      3 unsigned, 3 float e 3 double e imprima-os no video no seguinte formato:
-
-              10        20        30        40        50
-      12345678901234567890123456789012345678901234567890
-        int                 long                unsigned
-                  float               double
-        int                 long                unsigned
-                  float               double
-        int                 long                unsigned
-                  float               double
 */
 
 #ifdef ex1
@@ -113,6 +100,86 @@ int main()
 }
 
 #endif
+
+// ================================================================================
+
+#ifdef ex2
+int menu()
+{
+  int opt = 0;
+
+  system("cls");
+
+  printf("=====================================\n");
+  printf("          Organizar variaveis\n");
+  printf("=====================================\n");
+  printf("\n");
+  printf(" |  1 - Start\n");
+  printf(" |  2 - Exit the program\n");
+  printf("\nSelect an option: ");
+
+  scanf("%d", &opt);
+
+  return opt;
+}
+
+int main()
+{
+  int inteiro[3], optMenu, i;
+  long l[3];
+  unsigned int u[3];
+  float f[3];
+  double d[3];
+  while ((optMenu = menu()) != 2)
+  {
+    if (optMenu == 1)
+    {
+      system("cls");
+
+      for(i = 0; i < 3; i++){
+        printf("====%d vetor=====", i+1);
+        printf("\nInteiro: ");
+        scanf("%d", &inteiro[i]);
+
+        printf("Long: ");
+        scanf("%ld", &l[i]);
+
+        printf("unsigned: ");
+        scanf("%u", &u[i]);
+
+        printf("Float: ");
+        scanf("%f", &f[i]);
+
+        printf("Double: ");
+        scanf("%lf", &d[i]);
+      }
+
+      printf("\n");
+      printf("        10        20        30        40        50");
+      printf("\n");
+      printf("12345678901234567890123456789012345678901234567890");
+      printf("\n");
+
+      for(i = 0; i < 3; i++){
+        printf("  %-20d", inteiro[i]);
+        printf("%-20ld", l[i]);
+        printf("%-20u", u[i]);
+
+        printf("\n");
+
+        printf("            %-18f", f[i]);
+        printf("  %-20lf", d[i]);
+
+        printf("\n");
+
+      }
+      system("pause");
+    }
+  }
+  return 0;
+}
+
+#endif // ex2
 
 // ================================================================================
 
