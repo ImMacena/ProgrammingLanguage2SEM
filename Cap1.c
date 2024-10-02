@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define ex5
+#define ex2
 
 #ifdef ex1
 
@@ -51,12 +51,37 @@ int main()
   double d;
   char c;
 
+  printf("Short: ");
   scanf("%hd", &s);
+
+  printf("\nLong: ");
   scanf("%ld", &l);
+
+  printf("\nInt: ");
   scanf("%d", &i);
+
+  printf("\nFloat: ");
   scanf("%f", &f);
-  scanf("%f", &d);
+  fflush(stdin);
+
+  printf("\nDouble: ");
+  scanf("%lf", &d);
+  fflush(stdin);
+
+  printf("\nChar: ");
   scanf("%c", &c);
+
+  printf("        10        20        30        40        50        60");
+  printf("\n");
+  printf("12345678901234567890123456789012345678901234567890123456789012345");
+  printf("\n");
+  printf("    %-20hd", s);
+  printf("%-20ld", l);
+  printf("%-20d", i);
+  printf("\n");
+  printf("            %-20f", f);
+  printf("%-20lf", d);
+  printf("%-20c", c);
 }
 
 #endif
