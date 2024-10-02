@@ -1,6 +1,7 @@
 #include "stdio.h"
+#include "stdlib.h"
 
-#define ex1
+#define ex5
 
 /*
 	OBS.: Todos os programa devem ser finalizados pelo usuario.
@@ -19,21 +20,21 @@ char str1[10], str2[10];
 
 int menu()
 {
-  int opt = 0;
+	int opt = 0;
 
-  system("cls");
+	system("cls");
 
-  printf("=====================================\n");
-  printf("          Strings Compare\n");
-  printf("=====================================\n");
-  printf("\n");
-  printf(" |  1 - Start\n");
-  printf(" |  2 - Exit the program\n");
-  printf("\nSelect an option: ");
+	printf("=====================================\n");
+	printf("          Strings Compare\n");
+	printf("=====================================\n");
+	printf("\n");
+	printf(" |  1 - Start\n");
+	printf(" |  2 - Exit the program\n");
+	printf("\nSelect an option: ");
 
-  scanf("%d", &opt);
+	scanf("%d", &opt);
 
-  return opt;
+	return opt;
 }
 
 int comparaStrings()
@@ -58,19 +59,40 @@ int comparaStrings()
 
 int main()
 {
-	for (int i = 0; i < 2; i++)
-	{
-		printf("Digite a String n. %d: ", i + 1);
-		if (i == 0)
-			gets(str1);
-		else if (i == 1)
-			gets(str2);
-	}
+	int optMenu;
 
-	if (comparaStrings())
-		printf("As Strings sao iguais");
-	else if (!comparaStrings())
-		printf("As Strings sao diferentes");
+	while ((optMenu = menu()) != 2)
+	{
+		system("cls");
+
+		if (optMenu == 1)
+		{
+			for (int i = 0; i < 2; i++)
+			{
+				printf("Digite a String n. %d: ", i + 1);
+
+				if (i == 0)
+				{
+					fflush(stdin);
+					gets(str1);
+				}
+				else if (i == 1)
+				{
+					fflush(stdin);
+
+					gets(str2);
+				}
+			}
+
+			if (comparaStrings())
+				printf("As Strings sao iguais");
+			else if (!comparaStrings())
+				printf("As Strings sao diferentes");
+
+			printf("\n");
+			system("pause");
+		}
+	}
 
 	return 0;
 }
@@ -93,26 +115,59 @@ int main()
 													nome3
 */
 
+int menu()
+{
+	int opt = 0;
+
+	system("cls");
+
+	printf("=====================================\n");
+	printf("           Print Names\n");
+	printf("=====================================\n");
+	printf("\n");
+	printf(" |  1 - Start\n");
+	printf(" |  2 - Exit the program\n");
+	printf("\nSelect an option: ");
+
+	scanf("%d", &opt);
+
+	return opt;
+}
+
 char nome1[8], nome2[8], nome3[8], nome4[8], nome5[8];
 
 int main()
 {
+	int optMenu;
 
-	for (int i = 0; i < 5; i++)
+	while ((optMenu = menu()) != 2)
 	{
-		printf("Digite o nome %d: ", i + 1);
-		i == 0 ? gets(nome1) : (i == 1 ? gets(nome2) : (i == 2 ? gets(nome3) : (i == 3 ? gets(nome4) : gets(nome5))));
-	}
+		system("cls");
 
-	printf("        10        20        30        40        50");
-	printf("\n");
-	printf("12345678901234567890123456789012345678901234567890");
-	printf("\n");
-	printf("  %s                                       %s", nome1, nome5);
-	printf("\n");
-	printf("            %s                   %s", nome2, nome4);
-	printf("\n");
-	printf("                      %s", nome3);
+		if (optMenu == 1)
+		{
+			for (int i = 0; i < 5; i++)
+			{
+				printf("Digite o nome %d: ", i + 1);
+
+				fflush(stdin);
+				i == 0 ? gets(nome1) : (i == 1 ? gets(nome2) : (i == 2 ? gets(nome3) : (i == 3 ? gets(nome4) : gets(nome5))));
+			}
+
+			printf("        10        20        30        40        50");
+			printf("\n");
+			printf("12345678901234567890123456789012345678901234567890");
+			printf("\n");
+			printf("  %s                                       %s", nome1, nome5);
+			printf("\n");
+			printf("            %s                   %s", nome2, nome4);
+			printf("\n");
+			printf("                      %s", nome3);
+
+			printf("\n");
+			system("pause");
+		}
+	}
 }
 
 #endif
@@ -127,6 +182,25 @@ int main()
 		comprimento na funcao main().
 		(Declare o vetor como variavel global) (nao pode usar funcao de biblioteca)
 */
+
+int menu()
+{
+	int opt = 0;
+
+	system("cls");
+
+	printf("=====================================\n");
+	printf("           Vector Lentgh\n");
+	printf("=====================================\n");
+	printf("\n");
+	printf(" |  1 - Start\n");
+	printf(" |  2 - Exit the program\n");
+	printf("\nSelect an option: ");
+
+	scanf("%d", &opt);
+
+	return opt;
+}
 
 char str1[100];
 
@@ -143,11 +217,29 @@ int tamanhoString()
 
 int main()
 {
-	int tamString;
-	printf("Digite a String: ");
-	gets(str1);
-	tamString = tamanhoString();
-	printf("%d", tamString);
+	int optMenu;
+
+	while ((optMenu = menu()) != 2)
+	{
+		system("cls");
+
+		if (optMenu == 1)
+		{
+			int tamString;
+
+			printf("Digite a String: ");
+
+			fflush(stdin);
+			gets(str1);
+
+			tamString = tamanhoString();
+
+			printf("%d", tamString);
+
+			printf("\n");
+			system("pause");
+		}
+	}
 
 	return 0;
 }
@@ -161,6 +253,25 @@ int main()
 	4 - Receba via teclado uma cadeia de caracteres (10) e converta todos os caracteres
 		para letras maiusculas. (nao pode usar funcao de biblioteca)
 */
+
+int menu()
+{
+	int opt = 0;
+
+	system("cls");
+
+	printf("=====================================\n");
+	printf("          String Uppercase\n");
+	printf("=====================================\n");
+	printf("\n");
+	printf(" |  1 - Start\n");
+	printf(" |  2 - Exit the program\n");
+	printf("\nSelect an option: ");
+
+	scanf("%d", &opt);
+
+	return opt;
+}
 
 char str1[11];
 
@@ -182,11 +293,27 @@ void convertMaiusculo()
 
 int main()
 {
-	printf("Digite a String: ");
-	gets(str1);
+	int optMenu;
 
-	convertMaiusculo();
-	printf("%s", str1);
+	while ((optMenu = menu()) != 2)
+	{
+		system("cls");
+
+		if (optMenu == 1)
+		{
+			printf("Digite a String: ");
+
+			fflush(stdin);
+			gets(str1);
+
+			convertMaiusculo();
+
+			printf("%s", str1);
+
+			printf("\n");
+			system("pause");
+		}
+	}
 
 	return 0;
 }
@@ -200,6 +327,25 @@ int main()
 	5 - Receba via teclado uma cadeia de caracteres (10) e converta todos os caracteres
 		para letras minusculas. (nao pode usar funcao de biblioteca)
 */
+
+int menu()
+{
+	int opt = 0;
+
+	system("cls");
+
+	printf("=====================================\n");
+	printf("          String Lowercase\n");
+	printf("=====================================\n");
+	printf("\n");
+	printf(" |  1 - Start\n");
+	printf(" |  2 - Exit the program\n");
+	printf("\nSelect an option: ");
+
+	scanf("%d", &opt);
+
+	return opt;
+}
 
 char str1[11];
 
@@ -221,11 +367,26 @@ void convertMinusculo()
 
 int main()
 {
-	printf("Digite a String: ");
-	gets(str1);
+	int optMenu;
 
-	convertMinusculo();
-	printf("%s", str1);
+	while ((optMenu = menu()) != 2)
+	{
+		system("cls");
+
+		if (optMenu == 1)
+		{
+			printf("Digite a String: ");
+
+			fflush(stdin);
+			gets(str1);
+
+			convertMinusculo();
+			printf("%s", str1);
+
+			printf("\n");
+			system("pause");
+		}
+	}
 
 	return 0;
 }
