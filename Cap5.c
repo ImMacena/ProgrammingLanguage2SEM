@@ -1,7 +1,7 @@
 #include "stdio.h"
 #include "stdlib.h"
 
-#define ex5
+#define ex2
 
 /*
 	OBS.: Todos os programa devem ser finalizados pelo usuario.
@@ -158,11 +158,13 @@ int main()
 			printf("\n");
 			printf("12345678901234567890123456789012345678901234567890");
 			printf("\n");
-			printf("  %s                                       %s", nome1, nome5);
+			printf("  %-40s", nome1);
+			printf("%s", nome5);
 			printf("\n");
-			printf("            %s                   %s", nome2, nome4);
+			printf("            %-20s", nome2);
+			printf("%-s", nome4);
 			printf("\n");
-			printf("                      %s", nome3);
+			printf("                      %-s", nome3);
 
 			printf("\n");
 			system("pause");
