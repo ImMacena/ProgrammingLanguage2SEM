@@ -1,13 +1,10 @@
 #include "stdio.h"
 #include "stdlib.h"
 
-#define ex1
+#define ex2
 
 /*
 OBS.:Todos os programa devem ser finalizados pelo usuario.
-
-2 - Escreva um programa que receba via teclado uma data (dia, mes, e ano).
-		Determine o dia da semana desta data.
 */
 
 #ifdef ex1
@@ -18,41 +15,143 @@ OBS.:Todos os programa devem ser finalizados pelo usuario.
 		data (dia, mes e ano) atual.
 */
 
-int menu()
-{
-	int opt = 0;
+typedef struct {
+    int day;
+    int month;
+    int year;
+} Date;
 
-	system("cls");
+void calculateAge(Date birthDate, Date currentDate, int *years, int *months, int *days) {
+    *years = currentDate.year - birthDate.year;
+    *months = currentDate.month - birthDate.month;
+    *days = currentDate.day - birthDate.day;
 
-	printf("=============================\n");
-	printf("      Date Operations\n");
-	printf("=============================\n");
-	printf("\n");
-	printf(" |  1 - Start\n");
-	printf(" |  2 - Exit the program\n");
-	printf("\nSelect an option: ");
+    if (*days < 0) {
+        *months -= 1;
+        *days += 30;
+    }
 
-	scanf("%d", &opt);
-
-	return opt;
+    if (*months < 0) {
+        *years -= 1;
+        *months += 12;
+    }
 }
 
-int main()
-{
-	int optMenu;
+int menu() {
+    int option;
 
-	while ((optMenu = menu()) != 2)
-	{
-		if (optMenu == 1)
-		{
-			system("cls");
+    system("cls");
 
-			
-			printf("\n");
+    printf("=============================\n");
+    printf("      Date Operations\n");
+    printf("=============================\n");
+    printf("\n");
+    printf(" | 1 - Start\n");
+    printf(" | 2 - Exit the program\n");
+    printf("\nSelect an option: ");
 
-			system("pause");
-		}
-	}
+    scanf("%d", &option);
+
+    return option;
+}
+
+int main() {
+    int optMenu;
+    Date birthDate, currentDate;
+    int years, months, days;
+
+    while ((optMenu = menu()) != 2) {
+        if (optMenu == 1) {
+            system("cls");
+
+            printf("Enter your birth date (dd mm yyyy): ");
+            scanf("%d %d %d", &birthDate.day, &birthDate.month, &birthDate.year);
+
+            printf("Enter the current date (dd mm yyyy): ");
+            scanf("%d %d %d", &currentDate.day, &currentDate.month, &currentDate.year);
+
+            calculateAge(birthDate, currentDate, &years, &months, &days);
+
+            printf("\nYou are %d years, %d months, and %d days old.\n", years, months, days);
+            
+            system("pause");
+
+        }
+    }
+}
+
+#endif
+
+// ================================================================================
+
+#ifdef ex2
+
+/*
+2 - Escreva um programa que receba via teclado uma data (dia, mes, e ano).
+		Determine o dia da semana desta data.
+*/
+
+char* calculateDayOfWeek(int day, int month, int year) {
+    if (month < 3) {
+        month += 12;
+        year--;
+    }
+
+    int k = year % 100;
+    int j = year / 100;
+
+    // Fórmula de Zeller
+    int dayOfWeek = (day + (13 * (month + 1)) / 5 + k + (k / 4) + (j / 4) + (5 * j)) % 7;
+
+    switch (dayOfWeek) {
+        case 0: return "Saturday";
+        case 1: return "Sunday";
+        case 2: return "Monday";
+        case 3: return "Tuesday";
+        case 4: return "Wednesday";
+        case 5: return "Thursday";
+        case 6: return "Friday";
+        default: return "Invalid";
+    }
+}
+
+int menu() {
+    int option;
+
+    system("cls");
+
+    printf("=============================\n");
+    printf("      Date Operations\n");
+    printf("=============================\n");
+    printf("\n");
+    printf(" | 1 - Start\n");
+    printf(" | 2 - Exit the program\n");
+    printf("\nSelect an option: ");
+
+    scanf("%d", &option);
+
+    return option;
+}
+
+int main() {
+    int optMenu;
+
+    while ((optMenu = menu()) != 2) {
+        if (optMenu == 1) {
+            system("cls");
+
+            int day, month, year;
+
+            printf("Enter the date (dd mm yyyy): ");
+            scanf("%d %d %d", &day, &month, &year);
+
+            const char* dayOfWeek = calculateDayOfWeek(day, month, year);
+
+            printf("\nThe day of the week is: %s\n", dayOfWeek);
+            
+            system("pause");
+        }
+    }
 }
 
 #endif
